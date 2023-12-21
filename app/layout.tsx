@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Sidebar from '@/components/Sidebar'
 import GlobalStyleProvider from '@/providers/GlobalStyleProvider'
+import ContextProvider from '@/providers/ContextProvider'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,10 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <GlobalStyleProvider>
-          <Sidebar />
-          {children}
-        </GlobalStyleProvider>
+        <ContextProvider>
+          <GlobalStyleProvider>
+            <Sidebar />
+            {children}
+          </GlobalStyleProvider>
+        </ContextProvider>
       </body>
     </html>
   )
